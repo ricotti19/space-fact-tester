@@ -1,7 +1,5 @@
 # space-fact-tester
-Dynamic, full-stack, data-driven web application that transforms astronomical data into an interactive, gamified educational experience.
-
-User answers multiple-choice trivia questions about space and for every wrong question, difficulty level goes down by one; for every right question, difficulty level goes up by one. Initial difficulty level may or may not be level 1. 
+Dynamic, full-stack, data-driven web application that transforms astronomical data from an open API: `https://api.le-systeme-solaire.net/` into an interactive, gamified educational experience where the user answers multiple-choice trivia questions about space and for every wrong question, difficulty level goes down by one; for every right question, difficulty level goes up by one. Initial difficulty level may or may not be level 1. 
 
 ##  📂 File Structure
 ```text
