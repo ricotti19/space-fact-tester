@@ -61,3 +61,7 @@ Initialize the database tables and populate them with baseline data by running: 
 Last but not least, run: `python app.py`
 
 Navigate browser to `http://127.0.0.1:5000`
+
+Enjoy!
+
+Sample output:
