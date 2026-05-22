@@ -68,4 +68,5 @@ Navigate browser to `http://127.0.0.1:5000`
 
 Enjoy!
 
-Sample output:
+Link to demo:
+https://youtu.be/SayfkPpG6G4
