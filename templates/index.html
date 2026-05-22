@@ -65,13 +65,18 @@
             color: white;
         }
 
-        #difficulty {
+        /* Dynamic HUD Row Layout */
+        .hud-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
             font-size: 24px;
             font-weight: bold;
-            opacity: 0.8;
+            opacity: 0.9;
             margin-bottom: 15px;
+            font-family: Arial, sans-serif;
         }
-
+        
         #question {
             font-size: 30px;
             font-weight: bold;
@@ -129,7 +134,12 @@
     <div class="header">
         <h2>🚀 NASA MISSION QUIZ 🪐</h2>
     </div>
-    <div id="difficulty">Difficulty Level: 1</div>
+    
+    <div class="hud-container">
+        <div>Score: <span id="score-display" style="color: #00ffcc;">0</span></div>
+        <div>Difficulty Level: <span id="difficulty-display" style="color: #ffcc00;">1</span></div>
+    </div>
+
     <div id="question">Loading mission data...</div>
     <div class="options" id="options"></div>
     <div id="result"></div>
@@ -137,6 +147,7 @@
 
 <script>
 let currentQuestionId = null;
+let currentScore = 0; // Tracks arcade session score across rounds
 
 // 1. ADVANCED CROSSFADE BACKGROUND ENGINE
 const backgrounds = [
@@ -182,7 +193,10 @@ function render(data) {
     currentQuestionId = data.question_id;
 
     document.getElementById("question").innerText = data.question;
-    document.getElementById("difficulty").innerText = "Difficulty Level: " + data.difficulty;
+    
+    // Synchronize UI HUD strings smoothly
+    document.getElementById("difficulty-display").innerText = data.difficulty;
+    document.getElementById("score-display").innerText = currentScore;
 
     const box = document.getElementById("options");
     box.innerHTML = "";
@@ -214,10 +228,15 @@ async function submit(answer) {
     if (data.correct) {
         result.innerText = "✔ Mission Success";
         result.className = "correct";
+        currentScore += 10; // Increments arcade tracker on successful validation
     } else {
         result.innerText = "✖ Mission Failed";
         result.className = "wrong";
+        currentScore = Math.max(0, currentScore - 5); // Protects index from dropping into negative limits
     }
+
+    // Instantly update HUD score value so it reacts before the next question loads
+    document.getElementById("score-display").innerText = currentScore;
 
     setTimeout(() => {
         render(data.next_question);
