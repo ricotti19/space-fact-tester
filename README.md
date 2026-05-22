@@ -1,5 +1,7 @@
 # space-fact-tester
-Dynamic, full-stack, data-driven web application that transforms astronomical data from an open API: `https://api.le-systeme-solaire.net/` into an interactive, gamified educational experience where the user answers multiple-choice trivia questions about space and for every wrong question, difficulty level goes down by one; for every right question, difficulty level goes up by one. Initial difficulty level may or may not be level 1. 
+A dynamic, full-stack, data-driven web application that transforms real-time astronomical data from the Le Système Solaire Open API into an interactive, gamified educational experience. 
+
+The application features a responsive, context-aware multiple-choice trivia system powered by an adaptive difficulty engine. Users start their journey at an introductory baseline (Difficulty Level 1). For every correct answer, the backend scales the user up by one level to present more challenging cosmic data; for every incorrect answer, the difficulty drops by one level. The progression system dynamically caps between Levels 1 and 5, adjusting user paths without breaking the application state.
 
 ##  📂 File Structure
 ```text
