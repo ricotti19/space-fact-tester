@@ -152,17 +152,22 @@ def home():
 
 
 # ----------------------------
-# START QUIZ (FIRST QUESTION)
+# START QUIZ (FORCE LEVEL 1 START)
 # ----------------------------
 @app.route("/start", methods=["GET"])
 def start():
-    # ORM RANDOM SAMPLING
-    all_ids = [q.id for q in db.session.query(Question.id).all()]
-    if not all_ids:
+    # Only pull questions designated as baseline difficulty (Level 1)
+    level_1_questions = Question.query.filter_by(difficulty=1).all()
+    
+    if not level_1_questions:
+        # Emergency fallback if seed data doesn't have Level 1s
+        level_1_questions = Question.query.all()
+        
+    if not level_1_questions:
         return jsonify({"error": "No questions found in database. Run seed.py first!"}), 500
 
-    random_id = random.choice(all_ids)
-    q = Question.query.get(random_id)
+    # Pick a random question out of ONLY the Level 1 pool
+    q = random.choice(level_1_questions)
 
     return jsonify({
         "question_id": q.id,
