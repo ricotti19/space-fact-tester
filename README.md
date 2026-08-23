@@ -1,9 +1,10 @@
 # SpaceFactTester
+# Link to demo: https://youtu.be/SayfkPpG6G4
+
 A dynamic, full-stack, data-driven web application that transforms real-time astronomical data from the Le Système Solaire Open API into an interactive, gamified educational experience. 
 
 The application features a responsive, context-aware multiple-choice trivia system powered by an adaptive difficulty engine. Users start their journey at an introductory baseline (Difficulty Level 1). For every correct answer, the backend scales the user up by one level to present more challenging cosmic data; for every incorrect answer, the difficulty drops by one level. 
 
-**Link to demo: https://youtu.be/SayfkPpG6G4**
 
 The progression system dynamically caps between **Levels 1 and 4**, adjusting user paths without breaking the application state. 
 
