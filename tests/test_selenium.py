@@ -11,7 +11,9 @@ URL = "http://127.0.0.1:5000"
 
 
 def run_test():
+        # Initializes headless automated Chrome instance using WebDriver Manager
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+        # Set 10-second max threshold for dynamic DOM polling
     wait = WebDriverWait(driver, 10)
 
     try:
